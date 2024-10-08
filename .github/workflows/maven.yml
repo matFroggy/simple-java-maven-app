@@ -32,8 +32,17 @@ jobs:
         echo ${{ vars.USERNAME }} 
         echo ${{ secrets.ARTITOKEN }}
 
+    - name: Setup Maven settings.xml
+      uses: whelk-io/maven-settings-xml-action@v11
+      with:
+          servers: |
+            '[
+              {
+                "id": "artifactory",
+                "username": "${{ vars.USERNAME }}",
+                "password": "${{ secrets.ARTITOKEN }}"
+              }
+            ]'
+
     - name: Build with Maven
-      env:
-          ARTIFACTORY_USERNAME_REF: ${{ vars.USERNAME }}
-          ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTITOKEN }}
-      run: mvn -B deploy --file pom.xml -s .m2/settings.xml
+      run: mvn -B deploy --file pom.xml
