@@ -27,6 +27,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Debug
+      run: echo ${{ vars.USERNAME }} && ${{ secrets.ARTITOKEN }}
+
     - name: Build with Maven
       env:
           ARTIFACTORY_USERNAME_REF: ${{ vars.USERNAME }}
