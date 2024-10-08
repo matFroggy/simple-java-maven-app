@@ -28,7 +28,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Debug
-      run: echo ${{ vars.USERNAME }} && ${{ secrets.ARTITOKEN }}
+      run: |
+        echo ${{ vars.USERNAME }} 
+        echo ${{ secrets.ARTITOKEN }}
 
     - name: Build with Maven
       env:
