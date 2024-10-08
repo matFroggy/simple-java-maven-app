@@ -28,4 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      env:
+          ARTIFACTORY_USERNAME_REF: ${{ vars.USERNAME }}
+          ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTITOKEN }}
       run: mvn -B deploy --file pom.xml -s .m2/settings.xml
