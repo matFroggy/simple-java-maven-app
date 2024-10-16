@@ -26,6 +26,12 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: Build with Maven
+      env:
+        TOKEN: ${{ secrets.ARTITOKEN }}
+      run:      
+        # Trying Max command to have deps into buildInfo
+        mvn clean install --file pom.xml -s .m2/settings.xml
 
     - name: Setup JF Cli
       uses: jfrog/setup-jfrog-cli@v4
@@ -46,5 +52,3 @@ jobs:
         #jf rt build-collect-env
         # Collect VCS details from git and add them to the build
         jf rt build-add-git
-        # Trying Max command to have deps into buildInfo
-        mvn clean install --file pom.xml -s .m2/settings.xml
