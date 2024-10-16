@@ -18,6 +18,13 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+    <distributionManagement>
+      <repository>
+        <id>central</id>
+        <name>maven-local-snapshots</name>
+        <url>https://psemea.jfrog.io/artifactory/ob1-mvn</url>
+      </repository>
+    </distributionManagement>
   <build>
     <pluginManagement>
       <plugins>
