@@ -35,6 +35,7 @@ jobs:
 
     - name: Build Maven With JFrog CLI
       env:
+        TOKEN: ${{ secrets.ARTITOKEN }}
         # Generated and maintained by GitHub
         JFROG_CLI_BUILD_NAME: jfrog-mvn-build-example
         # JFrog organization secret
