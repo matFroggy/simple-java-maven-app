@@ -27,22 +27,25 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Debug
+
+    - name: Setup JF Cli
+      uses: jfrog/setup-jfrog-cli@v4
+      env:
+        JF_URL: ${{ secrets.JF_URL }}
+        JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+
+    - name: Build Maven With JFrog CLI
+      env:
+        # Generated and maintained by GitHub
+        JFROG_CLI_BUILD_NAME: jfrog-mvn-build-example
+        # JFrog organization secret
+        JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
       run: |
-        echo ${{ vars.USERNAME }} 
-        echo ${{ secrets.ARTITOKEN }}
-
-    - name: Setup Maven settings.xml
-      uses: whelk-io/maven-settings-xml-action@v11
-      with:
-          servers: |
-            '[
-              {
-                "id": "artifactory",
-                "username": "${{ vars.USERNAME }}",
-                "password": "${{ secrets.ARTITOKEN }}"
-              }
-            ]'
-
-    - name: Build with Maven
-      run: mvn -B deploy --file pom.xml
+        # Export the build name and build number
+        # Collect environment variables for the build
+        #jf rt build-collect-env
+        # Collect VCS details from git and add them to the build
+        #jf rt build-add-git
+        # Trying Max command to have deps into buildInfo
+        jf mvn-config
+        jf mvn clean install --file maven-examples/maven-example/pom.xml
