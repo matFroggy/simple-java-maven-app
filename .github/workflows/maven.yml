@@ -47,4 +47,5 @@ jobs:
         # Collect VCS details from git and add them to the build
         #jf rt build-add-git
         # Build maven with jfrog cli
+        jf mvn-config
         jf mvn clean install --file pom.xml -s .m2/settings.xml
