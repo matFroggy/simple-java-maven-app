@@ -50,4 +50,4 @@ jobs:
         jf mvn-config
         jf mvn clean install --file pom.xml -s .m2/settings.xml
         # Push BuildInfo to artifactory
-        jf rt build-publish
+        #jf rt build-publish
