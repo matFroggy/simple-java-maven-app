@@ -22,7 +22,7 @@
       <repository>
         <id>central</id>
         <name>maven-local-snapshots</name>
-        <url>https://psemea.jfrog.io/artifactory/ob1-mvn</url>
+        <url>http://34.142.111.18/artifactory/libs-snapshot-local</url>
       </repository>
     </distributionManagement>
   <build>
