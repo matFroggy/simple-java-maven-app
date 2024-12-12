@@ -35,7 +35,7 @@ jobs:
 
     - name: Build Maven With JFrog CLI
       env:
-        TOKEN: ${{ secrets.JF_DISTRI }}
+        TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
         # Generated and maintained by GitHub
         JFROG_CLI_BUILD_NAME: jfrog-mvn-build-example
         # JFrog organization secret
@@ -49,7 +49,7 @@ jobs:
         # Build maven with jfrog cli
         jf mvn-config
         jf mvn clean install --file pom.xml
-        mvn deploy --file pom.xml
+        #mvn deploy --file pom.xml
         # -s .m2/settings.xml
         # Push BuildInfo to artifactory
         jf rt build-publish
