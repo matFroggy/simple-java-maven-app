@@ -22,7 +22,7 @@
       <repository>
         <id>central</id>
         <name>maven-local-snapshots</name>
-        <url>https://psemea.jfrog.io/artifactory/ob1-mvn</url>
+        <url>https://psemea.jfrog.io/artifactory/fdm-mvn-virt</url>
       </repository>
     </distributionManagement>
   <build>
